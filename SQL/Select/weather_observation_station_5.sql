@@ -20,10 +20,17 @@ Let |city| be the length of the city, write a query to print two lines:
 If there are more than one possible cities print the lexicographical smallest.
 */
 
-SELECT CITY, LENGTH(CITY)
-FROM STATION
-ORDER BY LENGTH(CITY) DESC LIMIT 1;
+(
+    SELECT CITY, LENGTH(CITY)
+    FROM STATION
+    ORDER BY LENGTH(CITY), CITY
+    LIMIT 1
+)
+UNION
+(
+    SELECT CITY, LENGTH(CITY)
+    FROM STATION
+    ORDER BY LENGTH(CITY) DESC, CITY
+    LIMIT 1
+)
 
-SELECT CITY, LENGTH(CITY)
-FROM STATION
-ORDER BY LENGTH(CITY) ASC LIMIT 1;
